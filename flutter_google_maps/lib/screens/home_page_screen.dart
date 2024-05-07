@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'drawer_item_screens/profile_screen.dart';
 import 'drawer_item_screens/support_screen.dart';
+import 'drawer_item_screens/history_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -35,7 +36,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   MaterialPageRoute(
                       builder: (context) => const ProfileScreen()),
                 );
-                
               },
             ),
             ListTile(
@@ -47,13 +47,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   MaterialPageRoute(
                       builder: (context) => const SupportScreen()),
                 );
-                
               },
             ),
             ListTile(
               title: const Text('History'),
               onTap: () {
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HistoryScreen()),
+                );
               },
             ),
           ],

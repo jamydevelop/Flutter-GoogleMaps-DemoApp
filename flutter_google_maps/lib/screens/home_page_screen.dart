@@ -19,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const MapsScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const MapSample()));
             },
             icon: const Icon(Icons.pin_drop),
           )

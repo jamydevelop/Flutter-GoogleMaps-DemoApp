@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_google_maps/screens/maps_screen.dart';
 import 'drawer_item_screens/profile_screen.dart';
 import 'drawer_item_screens/support_screen.dart';
 import 'drawer_item_screens/history_screen.dart';
@@ -15,6 +16,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const MapsScreen()));
+            },
+            icon: const Icon(Icons.pin_drop),
+          )
+        ],
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Google Maps Demo'),
       ),
@@ -55,7 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HistoryScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const HistoryScreen()),
                 );
               },
             ),

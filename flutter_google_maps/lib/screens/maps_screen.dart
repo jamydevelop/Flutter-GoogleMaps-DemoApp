@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -19,13 +18,7 @@ class MapSampleState extends State<MapSample> {
     zoom: 10.4746,
   );
 
-  // static const CameraPosition _kLake = CameraPosition(
-  //     bearing: 192.8334901395799,
-  //     target: LatLng(37.43296265331129, -122.08832357078792),
-  //     tilt: 59.440717697143555,
-  //     zoom: 19.151926040649414);
-
-  List<Marker> _marker = [];
+  final List<Marker> _marker = [];
   final List<Marker> _list = const [
     // List of Markers Added on Google Map
     Marker(
@@ -33,6 +26,7 @@ class MapSampleState extends State<MapSample> {
         position: LatLng(14.625428, 121.124472),
         infoWindow: InfoWindow(
           title: 'Antipolo',
+          snippet:'Antipolo, city, central Luzon, Philippines. Lying 12 miles (19 km) '
         )),
 
     Marker(
@@ -40,6 +34,7 @@ class MapSampleState extends State<MapSample> {
         position: LatLng(14.554718, 121.024445),
         infoWindow: InfoWindow(
           title: 'Makati',
+          snippet: 'Makati lies in the heart of the Metro Manila. The city is known for its upscale shopping malls with high fashion brands, restaurants and hotels.'
         )),
 
     Marker(
@@ -47,6 +42,7 @@ class MapSampleState extends State<MapSample> {
         position: LatLng(14.558545, 121.136083),
         infoWindow: InfoWindow(
           title: 'Taytay',
+          snippet: 'Taytay is a first-class municipality located in the northern part of Palawan, a province located in the western portion of the Philippines.',
         )),
 
     Marker(
@@ -54,6 +50,7 @@ class MapSampleState extends State<MapSample> {
       position: LatLng(14.412973, 120.973689),
         infoWindow: InfoWindow(
           title: 'Bacoor',
+          snippet: 'The City Government of Bacoor is the gateway to the province of Cavite. ',
         )
       
     ),
@@ -62,6 +59,7 @@ class MapSampleState extends State<MapSample> {
       position: LatLng(14.299006, 120.958972),
         infoWindow: InfoWindow(
           title: 'Dasmarinas',
+          snippet: 'The City of Dasmariñas is known as the “University Capital of Cavite” and is classified as one of the most competitive cities in the country today.',
         )
       
     ),
@@ -70,6 +68,7 @@ class MapSampleState extends State<MapSample> {
       position: LatLng(14.794266, 120.879898),
         infoWindow: InfoWindow(
           title: 'Bulakan',
+          snippet: 'Bulacan is noted as the land of heroes, beautiful women, progressive cooperatives, small and medium-scale industries. ',
         )
       
     ),
@@ -78,6 +77,7 @@ class MapSampleState extends State<MapSample> {
       position: LatLng(14.599501, 120.984216),
         infoWindow: InfoWindow(
           title: 'Manila',
+          snippet: 'Manila, capital and chief city of the Philippines. The city is the centre of the countrys economic, political, social, and cultural activity.',
         )
       
     ),
@@ -85,7 +85,6 @@ class MapSampleState extends State<MapSample> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _marker.addAll(_list);
   }
@@ -93,6 +92,10 @@ class MapSampleState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Google Map Screen'),
+      ),
       body: GoogleMap(
         mapType: MapType.terrain,
         initialCameraPosition: _kGooglePlex,
@@ -100,24 +103,10 @@ class MapSampleState extends State<MapSample> {
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
-        // markers: {
-        //   const Marker(
-        //     markerId: MarkerId('Manila'),
-        //     position: LatLng(14.599364, 120.984080),
-        //     // onTap: ,
-        //   ),
-        // },
+       
       ),
 
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: _goToTheLake,
-      //   label: const Text('To the lake!'),
-      //   icon: const Icon(Icons.directions_boat),
-      // ),
+     
     );
   }
-  // Future<void> _goToTheLake() async {
-  //   final GoogleMapController controller = await _controller.future;
-  //   await controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-  // }
 }

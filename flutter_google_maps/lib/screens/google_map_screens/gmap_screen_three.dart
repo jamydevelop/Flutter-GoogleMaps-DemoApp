@@ -16,6 +16,13 @@ class _GMapScreenThreeState extends State<GMapScreenThree> {
       LatLng(37.42258740740897, -122.08517885561979);
   static const LatLng _pApplePark =
       LatLng(37.335173925986226, -122.00888515306963);
+  LatLng? _currentP = null;
+
+  @override
+  void initState() {
+    super.initState();
+    getLocationUpdates();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +69,12 @@ class _GMapScreenThreeState extends State<GMapScreenThree> {
         .listen((LocationData currentLocation) {
       if (currentLocation.latitude != null &&
           currentLocation.longitude != null) {
-            setState(() {
-              
-            });
-          }
+        setState(() {
+          _currentP =
+              LatLng(currentLocation.latitude!, currentLocation.longitude!);
+          print(_currentP);
+        });
+      }
     });
   }
 }

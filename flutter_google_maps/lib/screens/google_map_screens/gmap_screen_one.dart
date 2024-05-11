@@ -6,14 +6,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 // GoogleMapScreen
 
-class GoogleMapScreen extends StatefulWidget {
-  const GoogleMapScreen({super.key});
+class GMapScreenOne extends StatefulWidget {
+  const GMapScreenOne({super.key});
 
   @override
-  State<GoogleMapScreen> createState() => _GoogleMapScreenState();
+  State<GMapScreenOne> createState() => _GMapScreenOneState();
 }
 
-class _GoogleMapScreenState extends State<GoogleMapScreen> {
+class _GMapScreenOneState extends State<GMapScreenOne> {
 
   final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
 
@@ -63,6 +63,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           position: LatLng(value.latitude, value.longitude),
           infoWindow: const InfoWindow(
             title: 'My Location',
+            
           ),
         ),
       );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_google_maps/screens/google_map_screen.dart';
+import 'package:flutter_google_maps/screens/google_map_screens/gmap_screen_three.dart';
 //import 'screens/home_page_screen.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       //home: const MyHomePage(),
-      home: const GoogleMapScreen(),
+      home: const GMapScreenThree(),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 // GoogleMapScreen
@@ -13,8 +14,8 @@ class GoogleMapScreen extends StatefulWidget {
 }
 
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
+
+  final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
 
   static const CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(14.599364, 120.984080),
@@ -38,6 +39,45 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   void initState() {
     super.initState();
     myMarker.addAll(markerList);
+    //packData();
+  }
+
+  Future<Position> getUserLocation() async {
+    await Geolocator.requestPermission()
+        .then((value) {})
+        .onError((error, stackTrace) {
+      print('error $error');
+    });
+
+    return await Geolocator.getCurrentPosition();
+  }
+
+  packData() {
+    getUserLocation().then((value) async {
+      print('MyLocation');
+      print('${value.latitude} ${value.longitude}');
+
+      myMarker.add(
+        Marker(
+          markerId: const MarkerId('Second'),
+          position: LatLng(value.latitude, value.longitude),
+          infoWindow: const InfoWindow(
+            title: 'My Location',
+          ),
+        ),
+      );
+      CameraPosition cameraPosition = CameraPosition(
+        target: LatLng(value.latitude, value.longitude),
+        zoom: 14,
+      );
+
+      final GoogleMapController controller = await _controller.future;
+
+      controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+      setState(() {
+        
+      });
+    });
   }
 
   @override
@@ -59,7 +99,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // A method for user Location   
+          packData();
         },
         child: const Icon(Icons.radio_button_off),
       ),

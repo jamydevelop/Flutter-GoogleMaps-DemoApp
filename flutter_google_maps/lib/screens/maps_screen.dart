@@ -10,6 +10,7 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> {
+
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
@@ -28,7 +29,7 @@ class MapSampleState extends State<MapSample> {
           title: 'Antipolo',
           snippet:'Antipolo, city, central Luzon, Philippines. Lying 12 miles (19 km) '
         )),
-
+  
     Marker(
         markerId: MarkerId('2'),
         position: LatLng(14.554718, 121.024445),

@@ -46,7 +46,7 @@ class _GMapScreenOneState extends State<GMapScreenOne> {
     await Geolocator.requestPermission()
         .then((value) {})
         .onError((error, stackTrace) {
-      print('error $error');
+      //print('error $error');
     });
 
     return await Geolocator.getCurrentPosition();
@@ -54,8 +54,8 @@ class _GMapScreenOneState extends State<GMapScreenOne> {
 
   packData() {
     getUserLocation().then((value) async {
-      print('MyLocation');
-      print('${value.latitude} ${value.longitude}');
+      //print('MyLocation');
+      //print('${value.latitude} ${value.longitude}');
 
       myMarker.add(
         Marker(

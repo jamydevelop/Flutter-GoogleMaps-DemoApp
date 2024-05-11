@@ -20,13 +20,17 @@ class _GMapScreenThreeState extends State<GMapScreenThree> {
       body: GoogleMap(
         initialCameraPosition: const CameraPosition(
           target: _pGooglePlex,
-          zoom: 13,
+          zoom: 11,
         ),
         markers: {
           const Marker(
               markerId: MarkerId('_currentLocation'),
               icon: BitmapDescriptor.defaultMarker,
-              position: _pGooglePlex)
+              position: _pGooglePlex),
+           const Marker(
+              markerId: MarkerId('_sourceLocation'),
+              icon: BitmapDescriptor.defaultMarker,
+              position: _pApplePark)
         },
       ),
     );

@@ -27,22 +27,26 @@ class _GMapScreenThreeState extends State<GMapScreenThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        initialCameraPosition: const CameraPosition(
-          target: _pGooglePlex,
-          zoom: 11,
-        ),
-        markers: {
-          const Marker(
-              markerId: MarkerId('_currentLocation'),
-              icon: BitmapDescriptor.defaultMarker,
-              position: _pGooglePlex),
-          const Marker(
-              markerId: MarkerId('_sourceLocation'),
-              icon: BitmapDescriptor.defaultMarker,
-              position: _pApplePark)
-        },
-      ),
+      body: _currentP == null
+          ? const Center(
+              child: Text('Loading...'),
+            )
+          : GoogleMap(
+              initialCameraPosition: const CameraPosition(
+                target: _pGooglePlex,
+                zoom: 11,
+              ),
+              markers: {
+                const Marker(
+                    markerId: MarkerId('_currentLocation'),
+                    icon: BitmapDescriptor.defaultMarker,
+                    position: _pGooglePlex),
+                const Marker(
+                    markerId: MarkerId('_sourceLocation'),
+                    icon: BitmapDescriptor.defaultMarker,
+                    position: _pApplePark)
+              },
+            ),
     );
   }
 
@@ -72,7 +76,7 @@ class _GMapScreenThreeState extends State<GMapScreenThree> {
         setState(() {
           _currentP =
               LatLng(currentLocation.latitude!, currentLocation.longitude!);
-          print(_currentP);
+          print('*********LOCATION: ${_currentP}');
         });
       }
     });

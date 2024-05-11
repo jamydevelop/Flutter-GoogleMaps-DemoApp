@@ -57,6 +57,12 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // A method for user Location   
+        },
+        child: const Icon(Icons.radio_button_off),
+      ),
     );
   }
 }

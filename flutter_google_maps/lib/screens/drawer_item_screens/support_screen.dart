@@ -20,7 +20,8 @@ class _SupportScreenState extends State<SupportScreen> {
       isSentByUser: true,
     ),
     const ChatMessage(
-      text: "Sure, I'll do my best to assist you. What seems to be the problem?",
+      text:
+          "Sure, I'll do my best to assist you. What seems to be the problem?",
       isSentByUser: false,
     ),
     const ChatMessage(
@@ -28,7 +29,8 @@ class _SupportScreenState extends State<SupportScreen> {
       isSentByUser: true,
     ),
     const ChatMessage(
-      text: "Let me check that for you. Could you please provide me with your email address?",
+      text:
+          "Let me check that for you. Could you please provide me with your email address?",
       isSentByUser: false,
     ),
     const ChatMessage(
@@ -47,11 +49,17 @@ class _SupportScreenState extends State<SupportScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _messages.length,
-      itemBuilder: (context, index) {
-        return _messages[index];
-      },
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Support'),
+      ),
+      body: ListView.builder(
+        itemCount: _messages.length,
+        itemBuilder: (context, index) {
+          return _messages[index];
+        },
+      ),
     );
   }
 }
@@ -60,16 +68,17 @@ class ChatMessage extends StatelessWidget {
   final String text;
   final bool isSentByUser;
 
-  const ChatMessage({Key? key, required this.text, required this.isSentByUser}) : super(key: key);
+  const ChatMessage({Key? key, required this.text, required this.isSentByUser})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Align(
         alignment: isSentByUser ? Alignment.centerRight : Alignment.centerLeft,
         child: Container(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
             color: isSentByUser ? Colors.blue : Colors.grey[300],
             borderRadius: BorderRadius.circular(8.0),

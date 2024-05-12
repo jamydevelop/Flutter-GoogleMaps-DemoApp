@@ -17,6 +17,7 @@ class _MyApppState extends State<MyAppp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(title: 'Zavod-IT Demo App'),
     );
   }
@@ -55,38 +56,35 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
           actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const GMapScreenPh()));
-            },
-            icon: const Icon(Icons.pin_drop),
-          )
-        ],
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GMapScreenPh()));
+              },
+              icon: const Icon(Icons.pin_drop),
+            )
+          ],
         ),
         body: Center(
           child: _widgetOptions[_selectedIndex],
         ),
         drawer: Drawer(
-          // Add a ListView to the drawer. This ensures the user can scroll
+          // Added a ListView to the drawer. This ensures the user can scroll
           // through the options in the drawer if there isn't enough vertical
           // space to fit everything.
           child: ListView(
-            // Important: Remove any padding from the ListView.
+            // Important: padding must be from the ListView.
             padding: EdgeInsets.zero,
             children: [
-              // const DrawerHeader(
-              //   decoration: BoxDecoration(
-              //     color: Colors.blue,
-              //   ),
-              //   child: Text('Drawer Header'),
-              // ),
               ListTile(
                 title: const Text('Profile'),
                 selected: _selectedIndex == 0,
                 onTap: () {
                   // Update the state of the app
                   _onItemTapped(0);
-                  // Then close the drawer
+                  //close the drawer
                   Navigator.pop(context);
                 },
               ),
@@ -96,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: () {
                   // Update the state of the app
                   _onItemTapped(1);
-                  // Then close the drawer
+                  // close the drawer
                   Navigator.pop(context);
                 },
               ),
@@ -106,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: () {
                   // Update the state of the app
                   _onItemTapped(2);
-                  // Then close the drawer
+                  //close the drawer
                   Navigator.pop(context);
                 },
               ),

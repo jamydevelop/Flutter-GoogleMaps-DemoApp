@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_init_to_null
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
@@ -10,7 +12,8 @@ class GMapScreenThree extends StatefulWidget {
 }
 
 class _GMapScreenThreeState extends State<GMapScreenThree> {
-  Location _locationController = new Location();
+
+  final Location _locationController = Location();
 
   static const LatLng _pGooglePlex =
       LatLng(37.42258740740897, -122.08517885561979);
@@ -37,12 +40,17 @@ class _GMapScreenThreeState extends State<GMapScreenThree> {
                 zoom: 11,
               ),
               markers: {
+                // const Marker(
+                //   markerId: MarkerId('_currentLocation'),
+                //   icon: BitmapDescriptor.defaultMarker,
+                //   position: _currentP!,
+                // ),
                 const Marker(
-                    markerId: MarkerId('_currentLocation'),
+                    markerId: MarkerId('_sourceLocation'),
                     icon: BitmapDescriptor.defaultMarker,
                     position: _pGooglePlex),
                 const Marker(
-                    markerId: MarkerId('_sourceLocation'),
+                    markerId: MarkerId('_destinationLocation'),
                     icon: BitmapDescriptor.defaultMarker,
                     position: _pApplePark)
               },

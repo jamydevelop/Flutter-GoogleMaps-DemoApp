@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_google_maps/screens/google_map_screens/gmap_screen_four.dart';
-
-
+//import 'package:flutter_google_maps/home_page_screen.dart';
+import 'package:flutter_google_maps/screens/myappp.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,11 +15,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       //home: const MyHomePage(),
-      home: const GMapScreenFour(),
+       home: const MyAppp(), 
     );
   }
 }

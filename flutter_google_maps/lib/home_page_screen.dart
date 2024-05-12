@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_google_maps/screens/google_map_screen/gmap_screen_ph.dart';
 import 'screens/drawer_item_screens/profile_screen.dart';
 import 'screens/drawer_item_screens/support_screen.dart';
 import 'screens/drawer_item_screens/history_screen.dart';
@@ -18,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => const MapSample()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const GMapScreenPh()));
             },
             icon: const Icon(Icons.pin_drop),
           )
